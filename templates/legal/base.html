@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/docs.css') }}?v=3">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}?v=3">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile-header.css') }}?v=3">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/print.css') }}" media="print">
 
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fluid.classless.min.css"> -->
 
@@ -31,8 +33,6 @@
             <ul>
                 <li><a href="/">Shorten</a></li>
                 <li><a href="/stats">Stats</a></li>
-                </li>
-                <li onclick="showContactModal();"><a href="#">Contact</a></li>
             </ul>
         </div>
     </div>

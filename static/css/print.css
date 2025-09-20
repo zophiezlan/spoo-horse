@@ -1,0 +1,22 @@
+/* Print-specific styles */
+@media print {
+  /* Hide elements that are not necessary for printing */
+  header,
+  footer,
+  nav,
+  .no-print {
+    display: none;
+  }
+
+  /* Ensure the content fills the page */
+  body {
+    margin: 0;
+    padding: 0;
+    font-size: 12pt;
+  }
+
+  /* Add a title to the printed page */
+  @page {
+    margin: 1cm;
+  }
+}

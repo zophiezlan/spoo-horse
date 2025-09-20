@@ -44,6 +44,7 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}?v=8">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/print.css') }}" media="print">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}?v=3">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/self-promo.css') }}?v=2">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile-header.css') }}?v=3">
@@ -57,7 +58,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="preload">
 </head>
 
-<body>
+<body itemscope itemtype="http://schema.org/WebSite">
     {% if self_promo %}
         <div class="self-promo">
             <div class="self-promo-inner"><a href="{{ self_promo_uri }}" target="_blank" rel="noopener">🥳
@@ -100,7 +101,13 @@
                 <label for="long-url" id="tagline"><b>Shorten Your URLs, Not Your Possibilities.</b></label>
             </h1>
             <p id="url-error"></p>
-            <input type="text" id="long-url" name="url" required placeholder="https://your-long-url.com" value="{{ url }}">
+            <div class="url-input-container">
+                <label for="url-input" class="url-input-label">
+                    <img src="{{ url_for('static', filename='images/text.png') }}" alt="URL icon" class="url-input-icon">
+                </label>
+                <input type="url" id="url-input" name="url" placeholder="Enter a URL to shorten" required
+                       autocomplete="off">
+            </div>
             {% if error %}
             <script>
                 customTopNotification("AliasError", "{{ error }}", 10);
