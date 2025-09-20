@@ -6,7 +6,7 @@ Security fixes are applied to the latest version.
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability, please report it to us by emailing [security@spoo.me](mailto:security@spoo.me). We will respond as quickly as possible to address the issue.
+If you discover a security vulnerability, please report it to us by emailing [security@ket.horse](mailto:security@ket.horse). We will respond as quickly as possible to address the issue.
 
 Please include the following details in your report:
 - A description of the vulnerability and its impact.
@@ -28,4 +28,4 @@ To ensure the security of your deployment, we recommend the following best pract
 
 ## Contact
 
-If you have any questions or need further assistance, please contact us at [security@spoo.me](mailto:security@spoo.me).
+If you have any questions or need further assistance, please contact us at [security@ket.horse](mailto:security@ket.horse).

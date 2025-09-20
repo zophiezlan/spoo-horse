@@ -17,7 +17,7 @@ function validateURL() {
     var url = document.getElementById("long-url").value;
     var urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
 
-    if (!urlRegex.test(url) || url.includes('spoo.me')) {
+    if (!urlRegex.test(url) || url.includes('my.ket.horse')) {
         customTopNotification("UrlError", "Please Enter a valid URL", 10);
         return false;
     }

@@ -12,8 +12,8 @@ def api_route():
             "api.html",
             host_url=request.host_url,
             self_promo=True,
-            self_promo_uri="https://docs.spoo.me",
-            self_promo_text="We have moved and revamped the docs to https://docs.spoo.me",
+            self_promo_uri="https://docs.my.ket.horse",
+            self_promo_text="We have moved and revamped the docs to https://docs.my.ket.horse",
         )
     else:
-        return redirect("https://docs.spoo.me/api"), 301
+        return redirect("https://docs.my.ket.horse/api"), 301

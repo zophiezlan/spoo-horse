@@ -1,6 +1,6 @@
-Contact: mailto:support@spoo.me
-Contact: mailto:admin@spoo.me
-Contact: mailto:security@spoo.me
+Contact: mailto:support@ket.horse
+Contact: mailto:admin@ket.horse
+Contact: mailto:security@ket.horse
 Expires: 2026-03-09T18:30:00.000Z
 Preferred-Languages: en
-Policy: https://spoo.me/legal/privacy-policy
+Policy: https://my.ket.horse/legal/privacy-policy

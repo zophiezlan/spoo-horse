@@ -1,27 +1,27 @@
-<image src="https://spoo.me/static/images/banner-rounded.png">
+<image src="https://my.ket.horse/static/images/banner-rounded.png">
 
-<h3 align="center">spoo.me</h3>
+<h3 align="center">my.ket.horse</h3>
 <p align="center">Shorten Your Url not Your Possibilities 🚀</p>
 
 <p align="center">
     <a href="#-features"><kbd>🔥 Features</kbd></a>
     <a href="#-endpoints"><kbd>📌 Endpoints</kbd></a>
-    <a href="https://spoo.me/api" target="_blank"><kbd>🛠️ API Docs</kbd></a>
+    <a href="https://my.ket.horse/api" target="_blank"><kbd>🛠️ API Docs</kbd></a>
     <a href="#-getting-started"><kbd>🚀 Getting Started</kbd></a>
     <a href="#-contributing"><kbd>🤝 Contributing</kbd></a>
 </p>
 
 <p align="center">
-<a href="https://status.spoo.me"><img src="https://uptime.betterstack.com/status-badges/v1/monitor/qlmf.svg"></a>
-<img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fspoo.me%2Fmetric&query=%24.total-shortlinks&label=Links%20Shortened&color=6a5cf4&cacheSeconds=60" alt="Total URLs Shortened">
-<img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fspoo.me%2Fmetric&query=%24.total-clicks&label=Clicks%20Redirected&color=6a5cf4&cacheSeconds=60" alt="Total Clicks Redirected">
-<a href="https://spoo.me/discord"><img src="https://img.shields.io/discord/1192388005206433892?logo=discord" alt="Discord"></a>
+<a href="https://status.my.ket.horse"><img src="https://uptime.betterstack.com/status-badges/v1/monitor/qlmf.svg"></a>
+<img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmy.ket.horse%2Fmetric&query=%24.total-shortlinks&label=Links%20Shortened&color=6a5cf4&cacheSeconds=60" alt="Total URLs Shortened">
+<img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmy.ket.horse%2Fmetric&query=%24.total-clicks&label=Clicks%20Redirected&color=6a5cf4&cacheSeconds=60" alt="Total Clicks Redirected">
+<a href="https://my.ket.horse/discord"><img src="https://img.shields.io/discord/1192388005206433892?logo=discord" alt="Discord"></a>
 <a href="https://twitter.com/spoo_me"><img src="https://img.shields.io/twitter/follow/spoo_me?logo=x&label=%40spoo_me&color=0bf" alt="X (formerly Twitter) Follow"></a>
 </p>
 
 # ⚡ Introduction
 
-**spoo.me** is a free, open-source service for shortening URLs. It offers URL statistics, a free API, and customization options. You can create custom `slugs`, add `password protection`, and manage `link lifespans`.
+**my.ket.horse** is a free, open-source service for shortening URLs. It offers URL statistics, a free API, and customization options. You can create custom `slugs`, add `password protection`, and manage `link lifespans`.
 
 # 🔥 Features
 
@@ -33,49 +33,49 @@
 - `BOT Tracking` - Track bot clicks on your URLs 🤖
 - `API` - A free and open-sourced API for URL shortening and statistics 🛠️
 - `Export Click Data` - Export click data as a CSV, JSON, XLSX, or XML file 📤
-- `Open Source` - spoo.me is open-sourced and free to use 📖
+- `Open Source` - my.ket.horse is open-sourced and free to use 📖
 - `Absolutely Free` - No hidden costs, no premium plans, no limitations 💸
-- `No Registration` - No need to register an account to use spoo.me 📝
-- `Self Hosting` - You can host spoo.me on your own server 🏠
+- `No Registration` - No need to register an account to use my.ket.horse 📝
+- `Self Hosting` - You can host my.ket.horse on your own server 🏠
 
 # 📌 Endpoints
 
-The basic structure for accessing a shortened URL is: `https://spoo.me/<short_code>`
+The basic structure for accessing a shortened URL is: `https://my.ket.horse/<short_code>`
 
-**Example** - **https://spoo.me/ga**
+**Example** - **https://my.ket.horse/ga**
 
 ## 🔐 Accessing Password-Protected URLs
 
 For password-protected URLs, **use the same basic structure**. This redirects to a **password entry page**.
 
-**Example** - **https://spoo.me/exa** <br/>
+**Example** - **https://my.ket.horse/exa** <br/>
 **Password** - <kbd>Example@12</kbd>
 
 > [!TIP]
-> Bypass the password entry page by appending the password to the URL parameters - `https://spoo.me/<short_code>?password=<password>`
+> Bypass the password entry page by appending the password to the URL parameters - `https://my.ket.horse/<short_code>?password=<password>`
 
 ## 📈 Checking URL Statistics
 
-To view the statistics for a URL, use the following structure: `https://spoo.me/stats/<short_code>`
+To view the statistics for a URL, use the following structure: `https://my.ket.horse/stats/<short_code>`
 
-**Example** - **https://spoo.me/stats/ga**
+**Example** - **https://my.ket.horse/stats/ga**
 
 > [!NOTE]
 > You won't be able to view statistics for a password-protected page unless you provide its password.
 
 # 🛠️ API Docs
 
-Spoo.me offers a free, open-source API for URL shortening and statistics. Check it out below:
+my.ket.horse offers a free, open-source API for URL shortening and statistics. Check it out below:
 
-|[spoo.me API](https://spoo.me/api)|
+|[my.ket.horse API](https://my.ket.horse/api)|
 |---|
 
 # 🚀 Getting Started
 
 
-To self-host spoo.me on your server, follow the this **detailed** guide:
+To self-host my.ket.horse on your server, follow the this **detailed** guide:
 
-|[Self-Hosting Guide 🏠](https://spoo.me/docs/self-hosting)|
+|[Self-Hosting Guide 🏠](https://my.ket.horse/docs/self-hosting)|
 |---|
 
 
@@ -178,7 +178,7 @@ python main.py
 
 ### 🌐 Access the server
 
-Open your browser and go to `http://localhost:8000` to access the **spoo.me** URL shortener.
+Open your browser and go to `http://localhost:8000` to access the **my.ket.horse** URL shortener.
 
 </details>
 
@@ -191,25 +191,25 @@ Open your browser and go to `http://localhost:8000` to access the **spoo.me** UR
 - Make a [pull request](https://github.com/spoo-me/url-shortener/pull) for any feature or bug fix.
 
 > [!IMPORTANT]
-> For any type of support or queries, feel free to reach out to us at <kbd>[✉️ support@spoo.me](mailto:support@spoo.me)</kbd>
+> For any type of support or queries, feel free to reach out to us at <kbd>[✉️ support@my.ket.horse](mailto:support@my.ket.horse)</kbd>
 
 # 👀 Visual Previews
 
 **Main Page**
 
-[![spoo me main page](https://raw.githubusercontent.com/spoo-me/url-shortener/main/static/previews/main.png)](https://spoo.me)
+[![spoo me main page](https://raw.githubusercontent.com/spoo-me/url-shortener/main/static/previews/main.png)](https://my.ket.horse)
 
 **Result Page**
 
-[![spoo me result page](https://raw.githubusercontent.com/spoo-me/url-shortener/main/static/previews/result.png)](https://spoo.me/result/ga)
+[![spoo me result page](https://raw.githubusercontent.com/spoo-me/url-shortener/main/static/previews/result.png)](https://my.ket.horse/result/ga)
 
 **Stats Page**
 
-[![image](https://raw.githubusercontent.com/spoo-me/url-shortener/main/static/previews/stats.png)](https://spoo.me/stats/ga)
+[![image](https://raw.githubusercontent.com/spoo-me/url-shortener/main/static/previews/stats.png)](https://my.ket.horse/stats/ga)
 
 **API Page**
 
-[![image](https://raw.githubusercontent.com/spoo-me/url-shortener/main/static/previews/api.png)](https://spoo.me/api)
+[![image](https://raw.githubusercontent.com/spoo-me/url-shortener/main/static/previews/api.png)](https://my.ket.horse/api)
 
 # Repo Activity
 ![Contribution Charts](https://repobeats.axiom.co/api/embed/48a40934896cbcaff2812e80478ebb701ee49dd4.svg)
@@ -224,9 +224,9 @@ Open your browser and go to `http://localhost:8000` to access the **spoo.me** UR
 ---
 
 <h6 align="center">
-<img src="https://spoo.me/static/images/favicon.png" height=30 title="Spoo.me Copyright">
+<img src="https://my.ket.horse/static/images/favicon.png" height=30 title="my.ket.horse Copyright">
 <br>
-© spoo.me . 2024
+© my.ket.horse . 2024
 
 All Rights Reserved</h6>
 

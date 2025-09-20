@@ -1,10 +1,10 @@
-# Spoo.me AI Coding Agent Instructions
+# my.ket.horse AI Coding Agent Instructions
 
-This document provides guidance for AI coding agents to effectively contribute to the spoo.me project.
+This document provides guidance for AI coding agents to effectively contribute to the my.ket.horse project.
 
 ## Project Overview
 
-spoo.me is a free, open-source URL shortening service built with Flask and MongoDB. It provides features like custom slugs, password protection, and URL statistics.
+my.ket.horse is a free, open-source URL shortening service built with Flask and MongoDB. It provides features like custom slugs, password protection, and URL statistics.
 
 ## Architecture
 

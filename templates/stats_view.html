@@ -3,29 +3,29 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Advanced URL Statistics - Spoo.me</title>
-    <link rel="icon" type="image/png" href="https://spoo.me/static/images/favicon.png">
+    <title>Advanced URL Statistics - ket.horse</title>
+    <link rel="icon" type="image/png" href="https://my.ket.horse/static/images/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Unlock insights with spoo.me's URL statistics page. Track link performance, monitor clicks, and gauge audience engagement effortlessly. Make informed decisions to optimize your online presence with our user-friendly analytics interface.">
-    <link rel="canonical" href="https://spoo.me/stats">
+        content="Unlock insights with ket.horse's URL statistics page. Track link performance, monitor clicks, and gauge audience engagement effortlessly. Make informed decisions to optimize your online presence with our user-friendly analytics interface.">
+    <link rel="canonical" href="https://my.ket.horse/stats">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://spoo.me/stats" />
-    <meta property="og:title" content="Advanced URL Statistics - Spoo.me" />
+    <meta property="og:url" content="https://my.ket.horse/stats" />
+    <meta property="og:title" content="Advanced URL Statistics - ket.horse" />
     <meta property="og:description"
-        content="Unlock insights with spoo.me's URL statistics page. Track link performance, monitor clicks, and gauge audience engagement effortlessly. Make informed decisions to optimize your online presence with our user-friendly analytics interface" />
-    <meta property="og:image" content="https://spoo.me/static/images/stats-banner.webp" />
+        content="Unlock insights with ket.horse's URL statistics page. Track link performance, monitor clicks, and gauge audience engagement effortlessly. Make informed decisions to optimize your online presence with our user-friendly analytics interface" />
+    <meta property="og:image" content="https://my.ket.horse/static/images/stats-banner.webp" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://spoo.me/stats" />
-    <meta property="twitter:title" content="Advanced URL Statistics - Spoo.me" />
+    <meta property="twitter:url" content="https://my.ket.horse/stats" />
+    <meta property="twitter:title" content="Advanced URL Statistics - ket.horse" />
     <meta property="twitter:description"
-        content="Unlock insights with spoo.me's URL statistics page. Track link performance, monitor clicks, and gauge audience engagement effortlessly. Make informed decisions to optimize your online presence with our user-friendly analytics interface" />
-    <meta property="twitter:image" content="https://spoo.me/static/images/stats-banner.webp" />
-    <meta property="twitter:domain" content="https://spoo.me">
+        content="Unlock insights with ket.horse's URL statistics page. Track link performance, monitor clicks, and gauge audience engagement effortlessly. Make informed decisions to optimize your online presence with our user-friendly analytics interface" />
+    <meta property="twitter:image" content="https://my.ket.horse/static/images/stats-banner.webp" />
+    <meta property="twitter:domain" content="https://my.ket.horse">
 
     <meta content="#6af5dd" name="theme-color">
     <meta name="moz-appearance" content="#6af5dd">
@@ -53,24 +53,19 @@
         </div>
     {% endif %}
     <div class="navbar">
-        <img class="navbar-image" src="{{ url_for('static', filename='images/text.png') }}" alt="Spoo.me Banner Image" loading="lazy">
+        <img class="navbar-image" src="{{ url_for('static', filename='images/text.png') }}" alt="ket.horse Banner Image" loading="lazy">
         <div class="links">
             <ul>
                 <li><a href="/">Shorten</a></li>
-                <li><a href="/api">API</a></li>
                 <li><a href="/stats" class="active">Stats</a></li>
-                <li><a href="/report">Report URL</a></li>
-                <li><a href="https://github.com/spoo-me/url-shortener" rel="noopener" target="_blank">Open-Source ↗</a>
-                </li>
-                <li onclick="showContactModal();"><a href="#">Contact</a></li>
             </ul>
         </div>
     </div>
 
     <div class="mobile-navbar">
         <div class="mobile-logo">
-            <a href="/"><img class="mobile-logo-image" src="https://spoo.me/static/images/text.png"
-                    alt="Spoo.me Banner Image"></a>
+            <a href="/"><img class="mobile-logo-image" src="https://my.ket.horse/static/images/text.png"
+                    alt="ket.horse Banner Image"></a>
         </div>
         <button type="button" class="burger" style="margin: 0;" title="Menu">
             <span></span>
@@ -79,45 +74,8 @@
         </button>
         <ul class="mobile-menu">
             <li><a href="/">Shorten</a></li>
-            <li><a href="/api">API</a></li>
             <li><a href="/stats" class="active">Stats</a></li>
-            <li><a href="/report">Report URL</a></li>
-            <li><a href="https://github.com/spoo-me/url-shortener" rel="noopener" target="_blank">Open-Source ↗</a>
-            </li>
-            <li onclick="showContactModal();"><a href="#">Contact</a></li>
         </ul>
-    </div>
-
-    <div id="modalPopup" class="modal">
-        <div class="modal-content">
-            <h2 class="modal-header">Contact Us</h2>
-            <div class="button-container">
-                <button class="contact-button" onclick="openContactLink('/contact');"><img
-                        src="https://img.icons8.com/ios-filled/100/ffffff/pencil--v1.png" alt="Contact Form Symbol" loading="lazy">
-                    <p>Contact Form</p>
-                </button>
-                <button class="contact-button" onclick="openContactLink('https://spoo.me/discord');"><img
-                        src="https://img.icons8.com/ios-filled/100/ffffff/discord-logo.png" alt="Discord Logo" loading="lazy">
-                    <p>Discord</p>
-                </button>
-                <button class="contact-button" onclick="openContactLink('https://twitter.com/spoo_me');"><img
-                        src="https://img.icons8.com/ios-filled/100/ffffff/twitterx--v1.png" alt="Twitter Logo" loading="lazy">
-                    <p>Twitter</p>
-                </button>
-                <button class="contact-button" onclick="openContactLink('https://instagram.com/spoo.me');"><img
-                        src="https://img.icons8.com/ios-filled/100/ffffff/instagram-new.png" alt="Instagram Logo" loading="lazy">
-                    <p>Instagram</p>
-                </button>
-                <button class="contact-button" onclick="openContactLink('mailto:support@spoo.me');"><img
-                        src="https://img.icons8.com/pastel-glyph/100/ffffff/new-post--v1.png" alt="Email Icon" loading="lazy">
-                    <p>Email</p>
-                </button>
-                <button class="contact-button" onclick="openContactLink('https://github.com/spoo-me');"><img
-                        src="https://img.icons8.com/material-sharp/100/ffffff/github.png" alt="Github Logo" loading="lazy">
-                    <p>Github</p>
-                </button>
-            </div>
-        </div>
     </div>
 
     <div class="wrapper">
@@ -271,7 +229,7 @@
                 <div class="qr-code-upper">
                     <div id="qr-code-container">
                         <img class="qrcode" id="qrcode" alt="Qr Code for Sharing the ShortURL"
-                            src="https://qr.spoo.me/gradient?text={{ host_url }}stats/{{json_data['short_code']}}" loading="lazy">
+                            src="https://qr.my.ket.horse/gradient?text={{ host_url }}stats/{{json_data['short_code']}}" loading="lazy">
                         <span id="qrcode-overlay">Download</span>
                     </div>
                 </div>

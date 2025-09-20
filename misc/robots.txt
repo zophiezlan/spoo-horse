@@ -8,4 +8,4 @@ Allow: /report
 Allow: /contact
 Allow: /docs/
 
-Sitemap: https://spoo.me/sitemap.xml
+Sitemap: https://my.ket.horse/sitemap.xml

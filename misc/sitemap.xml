@@ -3,22 +3,22 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://spoo.me/</loc>
+    <loc>https://my.ket.horse/</loc>
     <lastmod>2024-09-14T19:42:52+00:00</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://spoo.me/api</loc>
+    <loc>https://my.ket.horse/api</loc>
     <lastmod>2024-09-14T19:42:52+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://spoo.me/stats</loc>
+    <loc>https://my.ket.horse/stats</loc>
     <lastmod>2024-09-14T19:42:52+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://spoo.me/report</loc>
+    <loc>https://my.ket.horse/report</loc>
     <lastmod>2024-09-14T19:42:52+00:00</lastmod>
     <priority>0.80</priority>
   </url>

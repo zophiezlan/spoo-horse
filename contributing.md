@@ -30,7 +30,7 @@ In this document, you will find guidelines and directions for contributing to th
 
 ## 📜 Code of Conduct
 
-This project and everyone participating in it is governed by the [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [support@spoo.me](mailto:support@spoo.me).
+This project and everyone participating in it is governed by the [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [support@ket.horse](mailto:support@ket.horse).
 
 ## 💡 How Can I Contribute?
 
@@ -370,7 +370,7 @@ Take a look at the [Jinja2 documentation](https://jinja.palletsprojects.com/en/3
 
 ## ✍🏻 Writing Blog Posts and Tutorials
 
-If you are interested in writing blog posts and tutorials, you can talk to us on [Discord](https://spoo.me/discord) or send us an email at [admin@spoo.me](mailto:admin@spoo.me)
+If you are interested in writing blog posts and tutorials, you can talk to us on [Discord](https://spoo.me/discord) or send us an email at [admin@ket.horse](mailto:admin@ket.horse)
 
 ## 📝 Additional Notes
 
