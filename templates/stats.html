@@ -40,7 +40,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/self-promo.css') }}?v=2">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/customNotification.css') }}?v=4">
 
-    <script src="{{ url_for('static', filename='js/customNotification.js') }}?v=3"></script>
+    <script src="{{ url_for('static', filename='js/customNotification.js') }}?v=3" defer></script>
 
 </head>
 
@@ -49,7 +49,7 @@
         <div class="self-promo" style="background-color: rgb(70, 17, 120);">
             <div class="self-promo-inner"><a href="{{ self_promo_uri }}" target="_blank" rel="noopener">🥳
                     {{ self_promo_text }}</a></div>
-            <button id="close-button" class="self-promo-close"><img width="20" height="20"
+            <button id="close-button" class="self-promo-close"><img width="20" height="20
                     src="https://img.icons8.com/metro/30/ffffff/delete-sign.png" alt="delete-sign" /></button>
         </div>
     {% endif %}

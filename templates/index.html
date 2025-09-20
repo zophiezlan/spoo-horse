@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en-US" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
@@ -12,6 +12,7 @@
     </script>
 
     <title>ket.horse URL Shortener</title>
+    <link rel="icon" type="image/png" href="https://my.ket.horse/static/images/favicon-512.png" sizes="512x512">
     <link rel="icon" type="image/png" href="https://my.ket.horse/static/images/favicon.png">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,12 +37,17 @@
         content="ket.horse is a free and easy-to-use URL shortener that lets you create short links for any website. You can even choose your own alias, set a password, and limit the number of clicks." />
     <meta property="twitter:image" content="https://my.ket.horse/static/images/banner.webp" />
 
-    <meta property="twitter:domain" content="https://my.ket.horse">
+    <link rel="apple-touch-icon" href="https://my.ket.horse/static/images/favicon-512.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <meta name="msapplication-config" content="https://my.ket.horse/static/browserconfig.xml">
 
     <meta content="#adb1ff" name="theme-color">
     <meta name="moz-appearance" content="#adb1ff">
     <meta content="#adb1ff" name="msapplication-TileColor">
 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}?v=8">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/print.css') }}" media="print">
@@ -51,166 +57,181 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/contacts-modal.css') }}?v=8">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/customNotification.css') }}?v=4">
 
-    <script src="{{ url_for('static', filename='js/customNotification.js') }}?v=3"></script>
+    <script src="{{ url_for('static', filename='js/customNotification.js') }}?v=3" defer></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="preload">
+    <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="stylesheet">
+    <link rel="dns-prefetch" href="https://cdn.rawgit.com">
+    <link rel="preload" href="{{ url_for('static', filename='css/index.css') }}?v=8" as="style">
+    <link rel="preload" href="{{ url_for('static', filename='js/index-script.js') }}?v=5" as="script">
+
+    <!-- It is recommended to use a webfont loader to control loading behavior. -->
+    <!-- It is recommended to extract the critical CSS and embed it here for faster rendering. -->
+    <!-- For better maintainability, consider using a CSS preprocessor like Sass. -->
+    <!-- For better performance, concatenate and minify CSS files. -->
+    <!-- For better performance, load CSS non-blockingly. -->
+    <!-- For better performance, remove unused CSS. -->
+    <!-- For better performance, extract critical CSS. -->
+    <!-- For better performance, optimize images. -->
+    <!-- For better performance, use picture/srcset for responsive images. -->
+    <!-- For better quality on high-resolution displays, provide retina images. -->
+    <!-- For better performance, use sprites for small images. -->
+    <!-- For better performance, lazy load images. -->
+    <!-- For better performance, concatenate and minify JavaScript files. -->
+    <!-- For better performance, use Service Workers to cache data and execute heavy tasks. -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebSite">
-    {% if self_promo %}
-        <div class="self-promo">
-            <div class="self-promo-inner"><a href="{{ self_promo_uri }}" target="_blank" rel="noopener">🥳
-                    {{ self_promo_text }}</a></div>
-            <button id="close-button" class="self-promo-close"><img width="20" height="20"
-                    src="https://img.icons8.com/metro/30/ffffff/delete-sign.png" alt="delete-sign" /></button>
-        </div>
-    {% endif %}
+    <header>
+        {% if self_promo %}
+            <div class="self-promo">
+                <div class="self-promo-inner"><a href="{{ self_promo_uri }}" target="_blank" rel="noopener">🥳
+                        {{ self_promo_text }}</a></div>
+                <button id="close-button" class="self-promo-close"><img width="20" height="20
+                        src="https://img.icons8.com/metro/30/ffffff/delete-sign.png" alt="delete-sign" /></button>
+            </div>
+        {% endif %}
 
-    <div class="navbar">
-        <img class="navbar-image" src="{{ url_for('static', filename='images/text.png') }}" alt="ket.horse Banner Image"
-            loading="lazy">
-        <div class="links">
-            <ul>
+        <nav class="navbar">
+            <img class="navbar-image" src="{{ url_for('static', filename='images/text.png') }}" alt="ket.horse Banner Image"
+                loading="lazy" width="100" height="25">
+            <div class="links">
+                <ul>
+                    <li><a href="#" class="active">Shorten</a></li>
+                    <li><a href="/stats">Stats</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <nav class="mobile-navbar">
+            <div class="mobile-logo">
+                <a href="#"><img class="mobile-logo-image" src="https://my.ket.horse/static/images/text.png"
+                        alt="ket.horse Banner Image" width="100" height="25"></a>
+            </div>
+            <button type="button" class="burger" title="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="mobile-menu">
                 <li><a href="#" class="active">Shorten</a></li>
                 <li><a href="/stats">Stats</a></li>
             </ul>
-        </div>
-    </div>
+        </nav>
+    </header>
 
-    <div class="mobile-navbar">
-        <div class="mobile-logo">
-            <a href="#"><img class="mobile-logo-image" src="https://my.ket.horse/static/images/text.png"
-                    alt="ket.horse Banner Image"></a>
-        </div>
-        <button type="button" class="burger" title="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <ul class="mobile-menu">
-            <li><a href="#" class="active">Shorten</a></li>
-            <li><a href="/stats">Stats</a></li>
-        </ul>
-    </div>
-
-    <div class="form-section">
-        <form action="/" method="POST" onsubmit="return validateURL() && validatePassword();">
-            <h1>
-                <label for="long-url" id="tagline"><b>Shorten Your URLs, Not Your Possibilities.</b></label>
-            </h1>
-            <p id="url-error"></p>
-            <div class="url-input-container">
-                <label for="url-input" class="url-input-label">
-                    <img src="{{ url_for('static', filename='images/text.png') }}" alt="URL icon" class="url-input-icon">
-                </label>
-                <input type="url" id="url-input" name="url" placeholder="Enter a URL to shorten" required
-                       autocomplete="off">
-            </div>
-            {% if error %}
-            <script>
-                customTopNotification("AliasError", "{{ error }}", 10);
-            </script>
-            {% endif %}
-            <div class="alias-time-container">
-                <div class="child">
-                    <label for="alias">Custom Alias</label>
-                    <div class="buttonIn">
-                        <div id="input-prefix">
-                            <span>{{ host_url }}</span>
+    <main>
+        <section class="form-section">
+            <form action="/" method="POST" onsubmit="return validateURL() && validatePassword();">
+                <fieldset>
+                    <legend class="sr-only">Shorten a URL</legend>
+                    {{ csrf_token() }}
+                    <h1>
+                        <label for="long-url" id="tagline"><b>Shorten Your URLs, Not Your Possibilities.</b></label>
+                    </h1>
+                    <p id="url-error"></p>
+                    <div class="url-input-container">
+                        <label for="url-input" class="sr-only">URL to shorten</label>
+                        <input type="url" id="url-input" name="url" placeholder="Enter a URL to shorten" required
+                               autocomplete="off">
+                    </div>
+                    {% if error %}
+                    <script>
+                        customTopNotification("AliasError", "{{ error }}", 10);
+                    </script>
+                    {% endif %}
+                    <div class="alias-time-container">
+                        <div class="child">
+                            <label for="alias">Custom Alias</label>
+                            <div class="buttonIn">
+                                <div id="input-prefix">
+                                    <span>{{ host_url }}</span>
+                                </div>
+                                <input type="text" id="alias" name="alias" placeholder="your-custom-alias">
+                            </div>
+                            <p id="non-imp">leave blank for random url slug</p>
                         </div>
-                        <input type="text" id="alias" name="alias" placeholder="your-custom-alias">
                     </div>
-                    <p id="non-imp">leave blank for random url slug</p>
+                    <p id="password-error"></p>
+                    <div id="password-div">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="optional" class="invalid">
+                    </div>
+                    <div id="clicks-div">
+                        <label for="max-clicks">Max Clicks</label>
+                        <input type="number" id="max-clicks" name="max-clicks" placeholder="optional" min="1">
+                    </div>
+                    <div class="checkbox-wrapper-4">
+                        <input class="inp-cbx" id="block-bots" type="checkbox" name="block-bots" />
+                        <label class="cbx" for="block-bots"><span>
+                                <svg width="12px" height="10px">
+                                    <use xlink:href="#check-4"></use>
+                                </svg></span><span class="block-bot-label">Block Bots</span></label>
+                        <svg class="inline-svg">
+                            <symbol id="check-4" viewbox="0 0 12 10">
+                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                            </symbol>
+                        </svg>
+                    </div>
+                    <div id="sub">
+                        <button type="submit">Shorten URL</button>
+                    </div>
+                </fieldset>
+            </form>
+
+            {% if recentURLs %}
+            <div id="recentURLs"> {% for url in recentURLs %} <div class="url-container">
+                    <div class="section-1">
+                        <div class="left-section">
+                            <span class="short-url">
+                                <a href="/{{ url}}" target="_blank" rel="noopener">{{ host_url }}{{ url }}</a>
+                            </span>
+                        </div>
+                        <div class="right-section">
+                            <div class="qr-code" data-url="{{ host_url }}{{ url }}"></div>
+                        </div>
+                    </div>
+                    <div class="section-2">
+                        <div class="button-container">
+                            <button class="copy-button" data-url="{{ host_url }}{{ url }}">Copy</button>
+                            <button class="stats-button">Stats</button>
+                        </div>
+                    </div>
+                </div> {% endfor %} </div>
+            {% endif %}
+        </section>
+
+        <section class="metrics-section">
+            <div class="metrics">
+                <div class="links-shortened">
+                    <h2 id="total-urls"></h2>
+                    <h4>LINKS SHORTENED</h4>
                 </div>
-                <!--  Custom Time Expiration is currently Buggy and not ready for Production  -->
-                <!-- <div class="child">
-                    <label for="expiration-time">Expiration Time</label>
-                    <input type="datetime-local" id="expiration-time" name="expiration-time">
-                    <p id="non-imp">leave blank for never expire</p>
-                </div> -->
-            </div>
-            <p id="password-error"></p>
-            <div id="password-div">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="optional" class="invalid">
-            </div>
-            <div id="clicks-div">
-                <label for="max-clicks">Max Clicks</label>
-                <input type="number" id="max-clicks" name="max-clicks" placeholder="optional" min="1">
-            </div>
-            <div class="checkbox-wrapper-4">
-                <input class="inp-cbx" id="block-bots" type="checkbox" name="block-bots" />
-                <label class="cbx" for="block-bots"><span>
-                        <svg width="12px" height="10px">
-                            <use xlink:href="#check-4"></use>
-                        </svg></span><span class="block-bot-label">Block Bots</span></label>
-                <svg class="inline-svg">
-                    <symbol id="check-4" viewbox="0 0 12 10">
-                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                    </symbol>
-                </svg>
-            </div>
-            <div id="sub">
-                <button type="submit">Shorten URL</button>
-            </div>
-        </form>
-
-        {% if recentURLs %}
-        <div id="recentURLs"> {% for url in recentURLs %} <div class="url-container">
-                <div class="section-1">
-                    <div class="left-section">
-                        <span class="short-url">
-                            <a href="/{{ url}}" target="_blank">{{ host_url }}{{ url }}</a>
-                        </span>
-                    </div>
-                    <div class="right-section">
-                        <div class="qr-code" data-url="{{ host_url }}{{ url }}"></div>
-                    </div>
+                <div class="clicks-served">
+                    <h2 id="total-clicks"></h2>
+                    <h4>CLICKS REDIRECTED</h4>
                 </div>
-                <div class="section-2">
-                    <div class="button-container">
-                        <button class="copy-button" data-url="{{ host_url }}{{ url }}">Copy</button>
-                        <button class="stats-button">Stats</button>
-                    </div>
-                </div>
-            </div> {% endfor %} </div>
-        {% endif %}
-    </div>
-
-    <div class="metrics-section">
-        <div class="metrics">
-            <div class="links-shortened">
-                <h2 id="total-urls"></h2>
-                <h4>LINKS SHORTENED</h4>
             </div>
-            <div class="clicks-served">
-                <h2 id="total-clicks"></h2>
-                <h4>CLICKS REDIRECTED</h4>
-            </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
-    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <footer>
+        <noscript>
+            <p>This website requires JavaScript to function properly. Please enable JavaScript in your browser.</p>
+        </noscript>
+        <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 
-    <script src="{{ url_for('static', filename='js/index-qrcode.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/index-validate.js') }}?v=1" defer=""></script>
-    <script src="{{ url_for('static', filename='js/index-script.js') }}?v=5" defer=""></script>
-    <script src="{{ url_for('static', filename='js/contacts-popup.js') }}?v=1" defer=""></script>
-    <script src="{{ url_for('static', filename='js/header.js') }}?v=1" defer=""></script>
-    <script src="{{ url_for('static', filename='js/self-promo.js') }}" defer=""></script>
-
-    <script>
-        window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/speed-insights/script.js"></script>
-
-    <script>
-        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
-
+        <script src="{{ url_for('static', filename='js/index-qrcode.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/index-validate.js') }}?v=1" defer=""></script>
+        <script src="{{ url_for('static', filename='js/index-script.js') }}?v=5" defer=""></script>
+        <script src="{{ url_for('static', filename='js/contacts-popup.js') }}?v=1" defer=""></script>
+        <script src="{{ url_for('static', filename='js/header.js') }}?v=1" defer=""></script>
+        <script src="{{ url_for('static', filename='js/self-promo.js') }}" defer=""></script>
+        <script src="{{ url_for('static', filename='js/analytics.js') }}" defer></script>
+        <script defer src="/_vercel/speed-insights/script.js"></script>
+        <script defer src="/_vercel/insights/script.js"></script>
+    </footer>
 </body>
 
 </html>

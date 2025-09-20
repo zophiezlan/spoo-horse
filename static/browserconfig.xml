@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+   <msapplication>
+     <tile>
+        <square70x70logo src="https://my.ket.horse/static/images/favicon.png"/>
+        <square150x150logo src="https://my.ket.horse/static/images/favicon.png"/>
+        <wide310x150logo src="https://my.ket.horse/static/images/banner.webp"/>
+        <square310x310logo src="https://my.ket.horse/static/images/favicon-512.png"/>
+     </tile>
+   </msapplication>
+</browserconfig>

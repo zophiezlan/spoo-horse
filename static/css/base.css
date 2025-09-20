@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap');
 
+body {
+    font-family: 'Allerta Stencil', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-display: swap;
+}
+
 body::-webkit-scrollbar {
     display: none;
 }
@@ -14,11 +19,44 @@ body::-webkit-scrollbar-track {
 }
 
 body {
-    font-family: 'Allerta Stencil', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-color: #333;
+    background-color: var(--primary-color);
     -ms-overflow-style: none;
+}
+
+a:visited {
+    color: var(--link-color);
+}
+
+a:focus, a:active {
+    outline: 2px solid var(--link-hover-color);
+}
+
+/* Visually hide an element while keeping it accessible to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+:root {
+    --primary-color: #333;
+    --text-color: #fff;
+    --link-color: #fff;
+    --link-hover-color: #ccc;
+    --button-bg-color: rgba(255, 255, 255, 0.2);
+    --button-hover-bg-color: rgba(255, 255, 255, 0.25);
+    --input-bg-color: rgba(255, 255, 255, 0.05);
+    --input-border-color: rgba(255, 255, 255, 0.2);
+    --input-focus-border-color: rgba(255, 255, 255, 0.5);
+    --error-color: white;
 }
