@@ -227,7 +227,7 @@
                     <a href="{{ url_for('url_shortener.index') }}" class="btn btn-primary">
                         🏠 Go Home
                     </a>
-                    <a href="{{ url_for('stats.stats_view_all') }}" class="btn btn-secondary">
+                    <a href="{{ url_for('stats.stats_route') }}" class="btn btn-secondary">
                         📊 View Stats
                     </a>
                     {% if error_code == 404 or error_code == 410 %}
