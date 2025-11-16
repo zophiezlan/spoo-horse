@@ -25,11 +25,31 @@ from utils.mongo_utils import client
 app = Flask(__name__)
 CORS(app)
 limiter.init_app(app)
-csrf = CSRFProtect(app)
-# Compress(app)  # Disabled: Vercel handles compression at edge level
 
 # In a real application, this should be a long, random string stored securely.
 app.config["SECRET_KEY"] = "a-very-secret-key"
+
+# CSRF Protection Configuration
+csrf = CSRFProtect(app)
+
+# Compress(app)  # Disabled: Vercel handles compression at edge level
+
+
+@app.before_request
+def csrf_protect_json_requests():
+    """
+    Exempt JSON API requests from CSRF validation.
+    If the request has Accept: application/json or Content-Type: application/json,
+    skip CSRF validation.
+    """
+    if request.method in ["POST", "PUT", "PATCH", "DELETE"]:
+        content_type = request.headers.get("Content-Type", "")
+        accept = request.headers.get("Accept", "")
+
+        # Exempt JSON API requests from CSRF
+        if "application/json" in content_type or accept == "application/json":
+            # Mark this request as exempt from CSRF
+            request.environ["WTF_CSRF_ENABLED"] = False
 
 app.register_blueprint(url_shortener)
 app.register_blueprint(url_redirector)

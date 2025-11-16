@@ -1,3 +1,15 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = []
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["blueprints*", "cache*", "utils*"]
+exclude = ["tests*", "static*", "templates*", "misc*"]
+
 [project]
 name = "spoo-me"
 version = "1.0.0"

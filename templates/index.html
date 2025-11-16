@@ -207,6 +207,7 @@
                 {% endif %}
 
                 <form method="POST" action="{{ url_for('url_shortener.shorten_url') }}" id="shortenerForm">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                     <!-- URL Input -->
                     <div class="url-input-group">
                         <input
