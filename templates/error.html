@@ -1,105 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="https://my.ket.horse/static/images/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Oops! Something went wrong." />
+    <title>{{ error_code }} - my.ket.horse</title>
+
+    <!-- Meta Tags -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+    <meta name="description" content="Oops! Something went wrong.">
+    <meta name="theme-color" content="#764ba2">
     <meta name="author" content="zophie">
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Error - ket.horse">
-    <meta property="og:description" content="Oops! Something went wrong.">
-    <meta property="og:image:url" content="https://my.ket.horse/static/images/error-gradient.jpg">
-    <meta property="og:url" content="https://my.ket.horse/error">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Error {{ error_code }} - my.ket.horse">
+    <meta property="og:description" content="{{ error_message }}">
     <meta property="og:type" content="website">
 
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Error - ket.horse">
-    <meta name="twitter:description" content="Oops! Something went wrong.">
-    <meta name="twitter:image:url" content="https://my.ket.horse/static/images/favicon-error.png">
-    <meta property="twitter:domain" content="https://my.ket.horse">
-
-    <title>Error</title>
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}?v=3">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/error.css') }}?v=1">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile-header.css') }}?v=3">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/contacts-modal.css') }}?v=8">
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/design-system.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/print.css') }}" media="print">
 
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .error-container {
+            max-width: 600px;
+            width: 100%;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .error-icon {
+            font-size: 120px;
+            text-align: center;
+            margin-bottom: 24px;
+            animation: pulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+        }
+
+        .error-code {
+            font-size: clamp(60px, 10vw, 100px);
+            font-weight: 800;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent-pink) 0%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            line-height: 1;
+        }
+
+        .error-title {
+            font-size: clamp(24px, 5vw, 36px);
+            font-weight: 700;
+            text-align: center;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .error-description {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 32px 0;
+        }
+
+        .help-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-top: 32px;
+        }
+
+        .help-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .help-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .help-list li {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 8px;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .help-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-weight: 700;
+        }
+
+        .glitch {
+            position: relative;
+            animation: glitch 3s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% {
+                transform: translateX(0);
+            }
+            92% {
+                transform: translateX(-2px);
+            }
+            94% {
+                transform: translateX(2px);
+            }
+            96% {
+                transform: translateX(-2px);
+            }
+            98% {
+                transform: translateX(2px);
+            }
+        }
+
+        .shake {
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+
+        @media (max-width: 768px) {
+            .error-icon {
+                font-size: 80px;
+            }
+
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-
 <body>
-    {% if self_promo %}
-        <div class="self-promo">
-            <div class="self-promo-inner"><a href="{{ self_promo_uri }}" target="_blank" rel="noopener">🥳
-                    {{ self_promo_text }}</a></div>
-            <button id="close-button" class="self-promo-close"><img width="20" height="20"
-                    src="https://img.icons8.com/metro/30/ffffff/delete-sign.png" alt="delete-sign" /></button>
-        </div>
-    {% endif %}
-    <div class="navbar">
-        <img class="navbar-image" src="{{ url_for('static', filename='images/text.png') }}" alt="ket.horse Banner Image" loading="lazy">
-        <div class="links">
-            <ul>
-                <li><a href="/">Shorten</a></li>
-                <li><a href="/stats">Stats</a></li>
-            </ul>
-        </div>
-    </div>
+    <div class="container-sm">
+        <div class="error-container">
+            <div class="glass-card">
+                <!-- Error Icon (dynamic based on error code) -->
+                <div class="error-icon">
+                    {% if error_code == 404 %}
+                        🔍
+                    {% elif error_code == 403 %}
+                        🔒
+                    {% elif error_code == 429 %}
+                        ⏱️
+                    {% elif error_code == 410 %}
+                        💨
+                    {% elif error_code == 500 %}
+                        ⚠️
+                    {% else %}
+                        ❌
+                    {% endif %}
+                </div>
 
-    <div class="mobile-navbar">
-        <div class="mobile-logo">
-            <a href="/"><img class="mobile-logo-image" src="https://my.ket.horse/static/images/text.png" alt="ket.horse Banner Image"></a>
-        </div>
-        <button type="button" class="burger" title="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <ul class="mobile-menu">
-            <li><a href="/" class="active">Shorten</a></li>
-            <li><a href="/stats">Stats</a></li>
-        </ul>
-    </div>
+                <!-- Error Code -->
+                <div class="error-code glitch">
+                    {{ error_code }}
+                </div>
 
-    <div class="gif-upper"><img class="gif"
-            src="https://i.ibb.co/BBQgtVS/error.webp"
-            alt="404 GIF" loading="lazy"></div>
+                <!-- Error Title -->
+                <h1 class="error-title">
+                    {% if error_code == 404 %}
+                        Page Not Found
+                    {% elif error_code == 403 %}
+                        Access Forbidden
+                    {% elif error_code == 429 %}
+                        Too Many Requests
+                    {% elif error_code == 410 %}
+                        Link Expired
+                    {% elif error_code == 500 %}
+                        Internal Server Error
+                    {% else %}
+                        {{ error_message }}
+                    {% endif %}
+                </h1>
 
-    <div class="error-message">
-        <div class="glitch-wrapper">
-            <div class="glitch" data-glitch="{{ error_code }}, {{ error_message }}">
-                {{ error_code }}, {{ error_message }}
+                <!-- Error Description -->
+                <p class="error-description">
+                    {% if error_code == 404 %}
+                        The page or short link you're looking for doesn't exist. It might have been moved, deleted, or you may have mistyped the URL.
+                    {% elif error_code == 403 %}
+                        You don't have permission to access this resource. This link might be password protected or restricted.
+                    {% elif error_code == 429 %}
+                        Whoa there! You've made too many requests. Please slow down and try again in a few moments.
+                    {% elif error_code == 410 %}
+                        This link has expired or reached its maximum number of clicks. It's no longer available.
+                    {% elif error_code == 500 %}
+                        Something went wrong on our end. We're working to fix it. Please try again later.
+                    {% else %}
+                        {{ error_message }}
+                    {% endif %}
+                </p>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <a href="{{ url_for('url_shortener.index') }}" class="btn btn-primary">
+                        🏠 Go Home
+                    </a>
+                    <a href="{{ url_for('stats.stats_view_all') }}" class="btn btn-secondary">
+                        📊 View Stats
+                    </a>
+                    {% if error_code == 404 or error_code == 410 %}
+                    <a href="{{ url_for('url_shortener.index') }}" class="btn btn-outline">
+                        ➕ Create New Link
+                    </a>
+                    {% endif %}
+                </div>
+
+                <!-- Help Section -->
+                <div class="help-box">
+                    <div class="help-title">
+                        💡 What can you do?
+                    </div>
+                    <ul class="help-list">
+                        {% if error_code == 404 %}
+                        <li>Double-check the URL for typos</li>
+                        <li>Go back to the homepage and try again</li>
+                        <li>Create a new short link if the old one expired</li>
+                        {% elif error_code == 403 %}
+                        <li>Contact the link creator for access</li>
+                        <li>Make sure you have the correct password</li>
+                        <li>Try creating your own link instead</li>
+                        {% elif error_code == 429 %}
+                        <li>Wait a few minutes before trying again</li>
+                        <li>Use an API key for higher rate limits</li>
+                        <li>Contact support if you need special access</li>
+                        {% elif error_code == 410 %}
+                        <li>Contact the link creator for a new link</li>
+                        <li>Create your own link with custom settings</li>
+                        <li>Set higher max-clicks for future links</li>
+                        {% else %}
+                        <li>Return to the homepage</li>
+                        <li>Try again in a few moments</li>
+                        <li>Contact support if the problem persists</li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+                <!-- Divider -->
+                <hr class="divider">
+
+                <!-- Footer Links -->
+                <div style="text-align: center;">
+                    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; font-size: 14px;">
+                        <a href="{{ url_for('url_shortener.index') }}">🏠 Home</a>
+                        <a href="/api">📖 API Docs</a>
+                        <a href="/tsdice/leaderboard">🏆 Leaderboard</a>
+                        <a href="https://ket.horse" target="_blank">🎨 tsDice</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="btn"><a href="/">
-                <pre>Home</pre>
-            </a></div>
-    </div>
-
-    <script src="{{ url_for('static', filename='js/contacts-popup.js') }}?v=1" defer=""></script>
-    <script src="{{ url_for('static', filename='js/header.js') }}?v=1" defer=""></script>
-
-    <script src="https://code.jivosite.com/widget/hJuQcxUqnJ" async></script>
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
 
     <script>
-        window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/speed-insights/script.js"></script>
+        // Toast notification
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast show' + (isError ? ' toast-error' : ' toast-success');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
 
-    <script>
-        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
+        // Add shake effect to error code on load
+        window.addEventListener('load', () => {
+            const errorCode = document.querySelector('.error-code');
+            errorCode.classList.add('shake');
+            setTimeout(() => {
+                errorCode.classList.remove('shake');
+            }, 500);
+        });
 
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Press 'H' to go home
+            if (e.key === 'h' || e.key === 'H') {
+                window.location.href = "{{ url_for('url_shortener.index') }}";
+            }
+            // Press 'Escape' to go home
+            if (e.key === 'Escape') {
+                window.location.href = "{{ url_for('url_shortener.index') }}";
+            }
+        });
+    </script>
 </body>
-
 </html>
