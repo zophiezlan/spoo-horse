@@ -9,7 +9,7 @@ from flask import (
 )
 from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect
-from flask_compress import Compress
+# from flask_compress import Compress  # Disabled: Vercel handles compression at edge level
 
 from blueprints.api import api
 from blueprints.contact import contact
@@ -19,19 +19,21 @@ from blueprints.seo import seo
 from blueprints.stats import stats
 from blueprints.url_shortener import url_shortener
 from blueprints.redirector import url_redirector
+from blueprints.tsdice_integration import tsdice
 from utils.mongo_utils import client
 
 app = Flask(__name__)
 CORS(app)
 limiter.init_app(app)
 csrf = CSRFProtect(app)
-Compress(app)
+# Compress(app)  # Disabled: Vercel handles compression at edge level
 
 # In a real application, this should be a long, random string stored securely.
 app.config["SECRET_KEY"] = "a-very-secret-key"
 
 app.register_blueprint(url_shortener)
 app.register_blueprint(url_redirector)
+app.register_blueprint(tsdice)
 app.register_blueprint(docs)
 app.register_blueprint(seo)
 app.register_blueprint(contact)

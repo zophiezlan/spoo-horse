@@ -1,139 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <title>URL Shortener Result</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ {{ short_code }} - my.ket.horse</title>
+
+    <!-- Meta Tags -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+    <meta name="description" content="Your shortened URL is ready! Share it anywhere.">
+    <meta name="theme-color" content="#764ba2">
     <meta name="author" content="zophie">
-    <link rel="icon" type="image/png" href="https://my.ket.horse/static/images/favicon.png" />
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}?v=4">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <!-- Open Graph -->
+    <meta property="og:title" content="URL Shortened Successfully!">
+    <meta property="og:description" content="Click to view your shortened URL">
+    <meta property="og:type" content="website">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/design-system.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/print.css') }}" media="print">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}?v=3">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/self-promo.css') }}?v=2">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/confetti.css') }}" <script
-        src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js" defer>
-    </script>
-    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js" defer></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile-header.css') }}?v=3">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/contacts-modal.css') }}?v=8">
 
-</head>
-
-<body>
-    {% if self_promo %}
-        <div class="self-promo" style="background-color: #1b1717">
-            <div class="self-promo-inner"><a href="{{ self_promo_uri }}" target="_blank" rel="noopener">🥳
-                    {{ self_promo_text }}</a></div>
-            <button id="close-button" class="self-promo-close"><img width="20" height="20"
-                    src="https://img.icons8.com/metro/30/ffffff/delete-sign.png" alt="delete-sign" /></button>
-        </div>
-    {% endif %}
-    <div class="navbar">
-        <img class="navbar-image" src="{{ url_for('static', filename='images/text.png') }}" alt="ket.horse Banner Image"
-            loading="lazy">
-        <div class="links">
-            <ul>
-                <li><a href="/">Shorten</a></li>
-                <li><a href="/stats">Stats</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="mobile-navbar">
-        <div class="mobile-logo">
-            <a href="/"><img class="mobile-logo-image" src="https://my.ket.horse/static/images/text.png"
-                    alt="ket.horse Banner Image"></a>
-        </div>
-        <button type="button" class="burger" title="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <ul class="mobile-menu">
-            <li><a href="/" class="active">Shorten</a></li>
-            <li><a href="/stats">Stats</a></li>
-        </ul>
-    </div>
-
-    <div class="flex-container" id="url-container">
-        <div id="url-container-inner">
-            <a href="{{short_url}}" target="_blank" id="short-url">{{ short_url }}</a>
-            <div class="copy-button">
-                <img src="https://img.icons8.com/fluency-systems-filled/48/ffffff/copy.png" alt="Copy" width="35"
-                    height="35" loading="lazy">
-            </div>
-        </div>
-    </div>
-
-    <div class="flex-container" id="main-container">
-        <div id="qr-code-container">
-            <img class="qrcode" id="qrcode" alt="Qr Code for Sharing the ShortURL"
-                src="https://qr.my.ket.horse/gradient?text={{ short_url }}&width=100&height=100&gradient1=1d1919&gradient2=322c29"
-                loading="lazy">
-            <span id="qrcode-overlay">Download</span>
-        </div>
-        <div class="right-container">
-            <div class="inline-share-buttons">
-                <div id="share-buttons">
-                    <a href="https://twitter.com/intent/tweet?url={{short_url}}" rel="noopener" target="_blank"
-                        data-platform="twitter"><img class="share-button" width="45" height="45"
-                            src="https://img.icons8.com/ios-filled/80/ffffff/twitterx--v1.png" alt="TwitterX" /></a>
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{short_url}}" rel="noopener" target="_blank"
-                        data-platform="facebook"><img class="share-button" width="45" height="45"
-                            src="https://img.icons8.com/ios-filled/80/ffffff/facebook-new.png" alt="FaceBook" /></a>
-                    <a href="https://t.me/share/url?url={{short_url}}" rel="noopener" data-platform="telegram"
-                        target="_blank"><img style="scale: 0.9;" class="share-button" width="45" height="45"
-                            src="https://img.icons8.com/ios-filled/80/ffffff/telegram.png" alt="Telegram" /></a>
-                    <a href="https://api.whatsapp.com/send?text={{short_url}}" rel="noopener" data-platform="whatsapp"
-                        target="_blank"><img style="scale: 0.9;" class="share-button" width="45" height="45"
-                            src="https://img.icons8.com/ios-filled/80/ffffff/whatsapp--v4.png" alt="WhatsApp" /></a>
-                    <a href="https://www.reddit.com/submit?url={{short_url}}" rel="noopener" data-platform="reddit"
-                        target="_blank"><img class="share-button" width="45" height="45"
-                            src="https://img.icons8.com/ios-filled/80/ffffff/reddit--v2.png" alt="Reddit" /></a>
-                    <a href="https://snapchat.com/scan?attachmentUrl={{short_url}}" rel="noopener"
-                        data-platform="snapchat" target="_blank"><img class="share-button" width="45" height="45"
-                            src="https://img.icons8.com/ios-filled/80/ffffff/snapchat--v2.png" alt="snapchat" /></a>
-                </div>
-            </div>
-            <div class="flex-container" id="misc-buttons">
-                <div>
-                    <button id="short-another-button" onclick="viewStats()">View Stats</b></button>
-                </div>
-                <div>
-                    <button id="short-another-button" onclick="shortenAnotherLink()">Shorten another link</button>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <script src="{{ url_for('static', filename='js/result-script.js') }}?v=1" defer></script>
-    <script src="{{ url_for('static', filename='js/confetti.js') }}?v=2" defer></script>
-    <script src="{{ url_for('static', filename='js/contacts-popup.js') }}?v=1" defer=""></script>
-    <script src="{{ url_for('static', filename='js/header.js') }}?v=1" defer=""></script>
-
-    <script>
-        function viewStats() {
-            window.location.href = "/stats/{{ short_code }}";
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
-    </script>
 
-    <script src="{{ url_for('static', filename='js/header.js') }}?v=1" defer=""></script>
-    <script src="{{ url_for('static', filename='js/self-promo.js') }}" defer=""></script>
+        .result-container {
+            max-width: 700px;
+            width: 100%;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .success-icon {
+            font-size: 80px;
+            text-align: center;
+            margin-bottom: 24px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .url-display-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--accent-blue);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin: 32px 0;
+            text-align: center;
+        }
+
+        .url-label {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .short-url {
+            font-size: clamp(20px, 4vw, 32px);
+            font-weight: 700;
+            color: var(--accent-blue);
+            word-break: break-all;
+            font-family: 'SFMono-Regular', Consolas, monospace;
+            margin-bottom: 16px;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .short-url:hover {
+            color: #fff;
+            transform: scale(1.02);
+        }
+
+        .copy-hint {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 32px 0;
+        }
+
+        .qr-code-section {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        .share-section {
+            margin-top: 32px;
+            text-align: center;
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        .share-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .share-btn:hover {
+            background: var(--glass-bg-hover);
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .share-section h3 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-sm">
+        <div class="result-container">
+            <div class="glass-card">
+                <!-- Success Icon -->
+                <div class="success-icon">✅</div>
+
+                <!-- Title -->
+                <h1 style="text-align: center; margin-bottom: 16px;">
+                    URL Shortened Successfully!
+                </h1>
+                <p style="text-align: center; color: var(--text-muted); margin-bottom: 32px;">
+                    Your short link is ready to share with the world
+                </p>
+
+                <!-- URL Display -->
+                <div class="url-display-box">
+                    <div class="url-label">Your Short URL</div>
+                    <div class="short-url" id="shortUrl" onclick="copyToClipboard()">
+                        {{ short_url }}
+                    </div>
+                    <div class="copy-hint">👆 Click to copy</div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="copyToClipboard()">
+                        📋 Copy Link
+                    </button>
+                    <a href="{{ url_for('stats.stats_view', short_code=short_code) }}" class="btn btn-secondary">
+                        📊 View Statistics
+                    </a>
+                    <a href="{{ short_url }}" target="_blank" class="btn btn-outline">
+                        🔗 Test Link
+                    </a>
+                    <a href="{{ url_for('url_shortener.index') }}" class="btn btn-outline">
+                        ➕ Create Another
+                    </a>
+                </div>
+
+                <!-- QR Code Section -->
+                <div class="qr-code-section">
+                    <h3 style="margin-bottom: 16px;">📱 QR Code</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 16px; font-size: 14px;">
+                        Scan with your phone to quickly share this URL
+                    </p>
+                    <div id="qrcode" style="display: inline-block; padding: 16px; background: white; border-radius: var(--radius-md);"></div>
+                </div>
+
+                <!-- Share Section -->
+                <div class="share-section">
+                    <h3 style="margin-bottom: 16px;">🚀 Share Your Link</h3>
+                    <div class="share-buttons">
+                        <a href="https://twitter.com/intent/tweet?url={{ short_url }}&text=Check%20this%20out!"
+                           target="_blank"
+                           class="share-btn"
+                           title="Share on Twitter"
+                           style="background: #1DA1F2;">
+                            𝕏
+                        </a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ short_url }}"
+                           target="_blank"
+                           class="share-btn"
+                           title="Share on Facebook"
+                           style="background: #1877F2;">
+                            f
+                        </a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ short_url }}"
+                           target="_blank"
+                           class="share-btn"
+                           title="Share on LinkedIn"
+                           style="background: #0A66C2;">
+                            in
+                        </a>
+                        <a href="https://reddit.com/submit?url={{ short_url }}"
+                           target="_blank"
+                           class="share-btn"
+                           title="Share on Reddit"
+                           style="background: #FF4500;">
+                            ⬆
+                        </a>
+                        <button onclick="shareNative()"
+                                class="share-btn"
+                                title="Share via native dialog"
+                                style="background: var(--accent-purple);">
+                            📤
+                        </button>
+                        <button onclick="shareViaEmail()"
+                                class="share-btn"
+                                title="Share via email"
+                                style="background: var(--accent-pink);">
+                            ✉️
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <hr class="divider">
+
+                <!-- Footer Info -->
+                <div style="text-align: center;">
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">
+                        💡 <strong>Pro Tip:</strong> Bookmark this page to access your link statistics later
+                    </p>
+                    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; font-size: 14px;">
+                        <a href="{{ url_for('url_shortener.index') }}">🏠 Home</a>
+                        <a href="/api">📖 API Docs</a>
+                        <a href="/tsdice/leaderboard">🏆 Leaderboard</a>
+                        <a href="https://ket.horse" target="_blank">🎨 tsDice</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
     <script>
-        window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/speed-insights/script.js"></script>
+        const shortUrl = "{{ short_url }}";
 
-    <script>
-        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
+        // Generate QR Code
+        new QRCode(document.getElementById("qrcode"), {
+            text: shortUrl,
+            width: 200,
+            height: 200,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
 
+        // Copy to clipboard function
+        function copyToClipboard() {
+            navigator.clipboard.writeText(shortUrl).then(() => {
+                showToast('✅ Link copied to clipboard!');
+
+                // Visual feedback
+                const urlElement = document.getElementById('shortUrl');
+                urlElement.style.color = '#10b981';
+                setTimeout(() => {
+                    urlElement.style.color = '';
+                }, 1000);
+            }).catch(err => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = shortUrl;
+                textArea.style.position = 'fixed';
+                textArea.style.opacity = '0';
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showToast('✅ Link copied!');
+            });
+        }
+
+        // Native share API
+        async function shareNative() {
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: 'Check out this link!',
+                        text: 'Shared via my.ket.horse',
+                        url: shortUrl
+                    });
+                    showToast('✅ Shared successfully!');
+                } catch (err) {
+                    if (err.name !== 'AbortError') {
+                        console.error('Share failed:', err);
+                        copyToClipboard();
+                    }
+                }
+            } else {
+                copyToClipboard();
+                showToast('📋 Link copied! Share it anywhere.');
+            }
+        }
+
+        // Share via email
+        function shareViaEmail() {
+            const subject = encodeURIComponent('Check out this link!');
+            const body = encodeURIComponent(`I wanted to share this link with you:\n\n${shortUrl}\n\nShortened with my.ket.horse`);
+            window.location.href = `mailto:?subject=${subject}&body=${body}`;
+        }
+
+        // Toast notification
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast show' + (isError ? ' toast-error' : ' toast-success');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Auto-select URL on click
+        document.getElementById('shortUrl').addEventListener('click', function() {
+            const selection = window.getSelection();
+            const range = document.createRange();
+            range.selectNodeContents(this);
+            selection.removeAllRanges();
+            selection.addRange(range);
+        });
+
+        // Keyboard shortcut: Ctrl/Cmd + C to copy
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+                const selection = window.getSelection().toString();
+                if (!selection) {
+                    e.preventDefault();
+                    copyToClipboard();
+                }
+            }
+        });
+
+        // Show success message on load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                showToast('🎉 Your URL is ready to share!');
+            }, 500);
+        });
+    </script>
 </body>
-
 </html>

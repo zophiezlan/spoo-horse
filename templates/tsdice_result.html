@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ {{ emojis }} - tsDice Share</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ host_url }}static/images/favicon.png">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Check out my particle animation! ✨">
+    <meta property="og:description" content="Created with tsDice - Interactive particle playground. Click to remix!">
+    <meta property="og:url" content="{{ short_url }}">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <style>
+        /* tsDice-inspired glassmorphism theme */
+        :root {
+            --bg-gradient-1: #667eea;
+            --bg-gradient-2: #764ba2;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: #f0f0f0;
+            --accent-purple: #8e2de2;
+            --accent-blue: #87ceeb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: var(--text-primary);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            padding: 48px 40px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            text-align: center;
+            animation: fadeInScale 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .emoji-display {
+            font-size: 72px;
+            margin-bottom: 24px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 12px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            opacity: 0.9;
+        }
+
+        .url-container {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .url-display {
+            flex: 1;
+            font-family: 'SFMono-Regular', Consolas, monospace;
+            font-size: 16px;
+            color: var(--text-primary);
+            word-break: break-all;
+            text-align: left;
+            user-select: all;
+        }
+
+        .copy-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+
+        .copy-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .copy-icon.copied {
+            animation: checkmark 0.5s ease;
+        }
+
+        @keyframes checkmark {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+
+        .button {
+            background: var(--accent-purple);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 8px;
+        }
+
+        .button:hover {
+            background: rgba(142, 45, 226, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(142, 45, 226, 0.4);
+        }
+
+        .button-secondary {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .button-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+        }
+
+        .buttons-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .stats-link {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .stats-link a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .stats-link a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(30, 30, 30, 0.95);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-size: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .footer {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--glass-border);
+            font-size: 13px;
+            opacity: 0.7;
+        }
+
+        .footer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            .glass-card {
+                padding: 32px 24px;
+            }
+
+            .emoji-display {
+                font-size: 56px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .url-display {
+                font-size: 14px;
+            }
+
+            .button {
+                padding: 14px 24px;
+                font-size: 15px;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .buttons-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="glass-card">
+            <div class="emoji-display">{{ emojis }}</div>
+
+            <h1>Your Particle Config is Live! ✨</h1>
+            <p class="subtitle">Share this link to let others experience your creation</p>
+
+            <div class="url-container">
+                <div class="url-display" id="short-url">{{ short_url }}</div>
+                <svg class="copy-icon" id="copy-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                </svg>
+            </div>
+
+            <div class="buttons-row">
+                <a href="{{ tsdice_url }}" class="button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <path d="M16 8h.01"></path>
+                        <path d="M12 12h.01"></path>
+                        <path d="M8 16h.01"></path>
+                    </svg>
+                    Create Your Own
+                </a>
+
+                <button class="button button-secondary" onclick="shareNative()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="18" cy="5" r="3"></circle>
+                        <circle cx="6" cy="12" r="3"></circle>
+                        <circle cx="18" cy="19" r="3"></circle>
+                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                    </svg>
+                    Share
+                </button>
+            </div>
+
+            <div class="stats-link">
+                <a href="{{ host_url }}stats/{{ short_code }}">
+                    📊 View Click Statistics
+                </a>
+            </div>
+
+            <div class="footer">
+                Powered by <a href="{{ tsdice_url }}">tsDice</a> &amp;
+                <a href="{{ host_url }}">my.ket.horse</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        const copyBtn = document.getElementById('copy-btn');
+        const shortUrl = document.getElementById('short-url').textContent;
+        const toast = document.getElementById('toast');
+
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        copyBtn.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(shortUrl);
+                copyBtn.classList.add('copied');
+                showToast('✅ Link copied to clipboard!');
+                setTimeout(() => {
+                    copyBtn.classList.remove('copied');
+                }, 500);
+            } catch (err) {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = shortUrl;
+                textArea.style.position = 'fixed';
+                textArea.style.opacity = '0';
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showToast('✅ Link copied!');
+            }
+        });
+
+        async function shareNative() {
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: 'Check out my particle animation! ✨',
+                        text: 'Created with tsDice - Interactive particle playground',
+                        url: shortUrl
+                    });
+                    showToast('✅ Shared successfully!');
+                } catch (err) {
+                    if (err.name !== 'AbortError') {
+                        copyToClipboard();
+                    }
+                }
+            } else {
+                // Fallback: copy to clipboard
+                await navigator.clipboard.writeText(shortUrl);
+                showToast('✅ Link copied to clipboard!');
+            }
+        }
+
+        // Auto-select URL on click
+        document.getElementById('short-url').addEventListener('click', function() {
+            const selection = window.getSelection();
+            const range = document.createRange();
+            range.selectNodeContents(this);
+            selection.removeAllRanges();
+            selection.addRange(range);
+        });
+    </script>
+</body>
+</html>

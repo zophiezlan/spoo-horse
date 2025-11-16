@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 tsDice Leaderboard - Trending Particle Configs</title>
+
+    <link rel="icon" type="image/png" href="{{ host_url }}static/images/favicon.png">
+
+    <meta property="og:title" content="🏆 tsDice Leaderboard">
+    <meta property="og:description" content="Discover the most popular particle animations created with tsDice">
+    <meta property="og:type" content="website">
+
+    <style>
+        :root {
+            --bg-gradient-1: #667eea;
+            --bg-gradient-2: #764ba2;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: #f0f0f0;
+            --accent-purple: #8e2de2;
+            --accent-blue: #87ceeb;
+            --gold: #ffd700;
+            --silver: #c0c0c0;
+            --bronze: #cd7f32;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: var(--text-primary);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            animation: fadeInDown 0.6s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            opacity: 0.9;
+        }
+
+        .stats-bar {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            padding: 24px 32px;
+            margin-bottom: 32px;
+            display: flex;
+            justify-content: space-around;
+            gap: 24px;
+            flex-wrap: wrap;
+            animation: fadeIn 0.6s ease 0.2s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent-blue);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 4px;
+        }
+
+        .leaderboard {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .rank-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: slideInLeft 0.5s ease both;
+        }
+
+        .rank-item:nth-child(n) { animation-delay: calc(0.1s * var(--index)); }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .rank-item:hover {
+            transform: translateX(8px);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px rgba(142, 45, 226, 0.3);
+        }
+
+        .rank-number {
+            font-size: 24px;
+            font-weight: 700;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .rank-1 .rank-number { color: var(--gold); }
+        .rank-2 .rank-number { color: var(--silver); }
+        .rank-3 .rank-number { color: var(--bronze); }
+
+        .rank-medal {
+            font-size: 32px;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .emoji-link {
+            font-size: 40px;
+            min-width: 60px;
+            text-align: center;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+
+        .emoji-link:hover {
+            transform: scale(1.2);
+        }
+
+        .info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .short-code {
+            font-family: 'SFMono-Regular', Consolas, monospace;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            word-break: break-all;
+        }
+
+        .creation-date {
+            font-size: 13px;
+            opacity: 0.7;
+        }
+
+        .click-count {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent-blue);
+            white-space: nowrap;
+        }
+
+        .click-label {
+            font-size: 13px;
+            opacity: 0.7;
+            display: block;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            opacity: 0.7;
+        }
+
+        .empty-state svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 24px;
+            opacity: 0.5;
+        }
+
+        .cta {
+            text-align: center;
+            margin-top: 48px;
+        }
+
+        .button {
+            background: var(--accent-purple);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .button:hover {
+            background: rgba(142, 45, 226, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(142, 45, 226, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .stats-bar {
+                padding: 20px;
+            }
+
+            .stat-number {
+                font-size: 24px;
+            }
+
+            .rank-item {
+                padding: 16px;
+                gap: 12px;
+            }
+
+            .emoji-link {
+                font-size: 32px;
+                min-width: 40px;
+            }
+
+            .short-code {
+                font-size: 16px;
+            }
+
+            .rank-number {
+                font-size: 20px;
+                min-width: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏆 tsDice Leaderboard</h1>
+            <p>Most popular particle configurations shared by the community</p>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat">
+                <span class="stat-number">{{ total_configs }}</span>
+                <span class="stat-label">Configs Shared</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">{{ total_clicks }}</span>
+                <span class="stat-label">Total Clicks</span>
+            </div>
+        </div>
+
+        <div class="leaderboard">
+            {% if configs %}
+                {% for config in configs %}
+                <div class="rank-item rank-{{ loop.index }}" style="--index: {{ loop.index }}" onclick="window.location.href='{{ host_url }}{{ config._id }}'">
+                    {% if loop.index <= 3 %}
+                        <div class="rank-medal">
+                            {% if loop.index == 1 %}🥇{% elif loop.index == 2 %}🥈{% else %}🥉{% endif %}
+                        </div>
+                    {% else %}
+                        <div class="rank-number">#{{ loop.index }}</div>
+                    {% endif %}
+
+                    <a href="{{ host_url }}{{ config._id }}" class="emoji-link" onclick="event.stopPropagation()">
+                        {{ config._id }}
+                    </a>
+
+                    <div class="info">
+                        <div class="short-code">{{ host_url }}{{ config._id }}</div>
+                        <div class="creation-date">
+                            Created {{ config['creation-date'] }}
+                            {% if config.get('creation-time') %}
+                                at {{ config['creation-time'] }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="click-count">
+                        {{ config['total-clicks'] }}
+                        <span class="click-label">clicks</span>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="empty-state">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <path d="M16 8h.01"></path>
+                        <path d="M12 12h.01"></path>
+                        <path d="M8 16h.01"></path>
+                    </svg>
+                    <h2>No configs shared yet!</h2>
+                    <p>Be the first to create and share a particle animation</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="cta">
+            <a href="https://ket.horse" class="button">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <path d="M16 8h.01"></path>
+                    <path d="M12 12h.01"></path>
+                    <path d="M8 16h.01"></path>
+                </svg>
+                Create Your Own on tsDice
+            </a>
+        </div>
+    </div>
+</body>
+</html>
