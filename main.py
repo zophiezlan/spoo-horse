@@ -9,7 +9,7 @@ from flask import (
 )
 from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect
-from flask_compress import Compress
+# from flask_compress import Compress  # Disabled: Vercel handles compression at edge level
 
 from blueprints.api import api
 from blueprints.contact import contact
@@ -26,7 +26,7 @@ app = Flask(__name__)
 CORS(app)
 limiter.init_app(app)
 csrf = CSRFProtect(app)
-Compress(app)
+# Compress(app)  # Disabled: Vercel handles compression at edge level
 
 # In a real application, this should be a long, random string stored securely.
 app.config["SECRET_KEY"] = "a-very-secret-key"
