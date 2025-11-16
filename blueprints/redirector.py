@@ -97,6 +97,27 @@ def redirect_url(short_code):
             404,
         )
 
+    # Check if this is a social media crawler and show rich preview for tsdice links
+    user_agent = request.headers.get("User-Agent", "")
+    social_crawlers = [
+        "facebookexternalhit", "Twitterbot", "LinkedInBot",
+        "Discordbot", "Slackbot", "WhatsApp", "TelegramBot",
+        "Pinterest", "Googlebot", "Bingbot"
+    ]
+
+    is_social_crawler = any(bot.lower() in user_agent.lower() for bot in social_crawlers)
+
+    # Show rich preview for tsdice configs when accessed by social media crawlers
+    if is_social_crawler and url_data.get("tsdice-config"):
+        return render_template(
+            "tsdice_preview.html",
+            short_code=short_code,
+            emojis=short_code,
+            destination_url=url_data["url"],
+            host_url=request.host_url,
+            tsdice_url="https://ket.horse"
+        )
+
     url = url_data["url"]
 
     if "max-clicks" in url_data:
