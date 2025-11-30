@@ -75,7 +75,7 @@ Please follow these steps to have your contribution considered by the maintainer
 The project is structured as follows:
 
 ```plaintext
-url-shortener/
+spoo-horse/
 │   .env
 │   .env.example
 │   .gitignore
