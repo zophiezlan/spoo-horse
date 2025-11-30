@@ -73,7 +73,8 @@ def validate_password(password):
 def validate_url(url):
     return (
         validators.url(url, skip_ipv4_addr=True, skip_ipv6_addr=True)
-        and "spoo.me" not in url
+        and "my.ket.horse" not in url
+        and "ket.horse" not in url
     )
 
 

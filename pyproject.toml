@@ -11,7 +11,7 @@ include = ["blueprints*", "cache*", "utils*"]
 exclude = ["tests*", "static*", "templates*", "misc*"]
 
 [project]
-name = "spoo-me"
+name = "my-ket-horse"
 version = "1.0.0"
 description = "Open-Source URL Shortener Written in Flask"
 readme = "README.md"

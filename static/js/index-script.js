@@ -38,7 +38,7 @@ function get_metrics() {
             document.querySelector('#discord-online').textContent = data["presence_count"]+"+";
         });
 
-    fetch('https://api.github.com/repos/spoo-me/url-shortener')
+    fetch('https://api.github.com/repos/zophiezlan/spoo-horse')
         .then(response => response.json())
         .then(data => {
             document.querySelector('#github-stars').textContent = data["stargazers_count"];

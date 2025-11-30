@@ -17,8 +17,8 @@ def test_url_with_ipv6():
     assert not validate_url("http://[2001:db8::1]")  # URL with IPv6 address
 
 
-def test_url_with_spoo_me():
-    assert not validate_url("https://www.spoo.me")  # URL containing "spoo.me"
+def test_url_with_ket_horse():
+    assert not validate_url("https://my.ket.horse")  # URL containing "my.ket.horse"
 
 
 def test_valid_url_with_query_params():

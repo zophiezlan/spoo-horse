@@ -2,8 +2,6 @@
 
 First off, thank you for considering contributing to this project! It's people like you that make the open source community such a fantastic place to learn, inspire, and create. Every contribution helps and is greatly appreciated!
 
-> [!NOTE]
-> ## View the updated contribution guidelines at https://docs.spoo.me/contributing
 
 In this document, you will find guidelines and directions for contributing to this project. Please respect these guidelines as they are meant to foster a consistent and respectful approach to collaboration.
 
@@ -45,7 +43,7 @@ You can contribute to this project in many ways. Here are a few ideas:
 - Providing support to other people who are using the project 🤝
 - Writing blog posts and tutorials ✍🏻
 
-We are always available to help you with your contribution. If you are unsure about anything, just ping us on [discord](https://spoo.me/discord) or submit the issue or pull request anyway. The worst that can happen is that you'll be asked to change something about your contribution.
+We are always available to help you with your contribution. If you are unsure about anything, just submit the issue or pull request anyway. The worst that can happen is that you'll be asked to change something about your contribution.
 
 ## 🪲 Reporting Bugs
 
@@ -158,8 +156,8 @@ You need to have **MongoDB installed on your machine** to run the project. You c
 2. Clone the project to your own machine
 
 ```bash
-git clone https://github.com/spoo-me/url-shortener.git
-cd url-shortener
+git clone https://github.com/zophiezlan/spoo-horse.git
+cd spoo-horse
 ```
 
 3. Install the project dependencies
@@ -366,15 +364,15 @@ If the version of the file is **already updated**, you can just change the value
 
 Take a look at the [Jinja2 documentation](https://jinja.palletsprojects.com/en/3.0.x/templates/) for more information.
 
-**In case of any confusion, you can ask for help in our** [**Discord Server**](https://spoo.me/discord).
+**In case of any confusion, you can open an issue on GitHub.**
 
 ## ✍🏻 Writing Blog Posts and Tutorials
 
-If you are interested in writing blog posts and tutorials, you can talk to us on [Discord](https://spoo.me/discord) or send us an email at [admin@ket.horse](mailto:admin@ket.horse)
+If you are interested in writing blog posts and tutorials, you can send us an email at [admin@ket.horse](mailto:admin@ket.horse)
 
 ## 📝 Additional Notes
 
-This project is a living document and will be updated as the project evolves. Please check back regularly for updates. We also reccomend you to join our [Discord Server](https://spoo.me/discord) to get in touch with the maintainers and other contributors.
+This project is a living document and will be updated as the project evolves. Please check back regularly for updates.
 
 ## ⚖️ License
 

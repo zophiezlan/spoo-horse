@@ -27,8 +27,8 @@ def test_send_report_success(mocker):
                         {"name": "IP Address", "value": f"```{ip_address}```"},
                     ],
                     "footer": {
-                        "text": "spoo-me",
-                        "icon_url": "https://spoo.me/static/images/favicon.png",
+                        "text": "my.ket.horse",
+                        "icon_url": "https://my.ket.horse/static/images/favicon.png",
                     },
                 }
             ]
@@ -75,8 +75,8 @@ def test_send_contact_message_success(mocker):
                         {"name": "Message", "value": f"```{message}```"},
                     ],
                     "footer": {
-                        "text": "spoo-me",
-                        "icon_url": "https://spoo.me/static/images/favicon.png",
+                        "text": "my.ket.horse",
+                        "icon_url": "https://my.ket.horse/static/images/favicon.png",
                     },
                 }
             ]
