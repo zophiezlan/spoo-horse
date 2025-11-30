@@ -42,8 +42,8 @@ def send_report(webhook_uri, short_code, reason, ip_address, host_uri):
                 ],
                 "timestamp": datetime.now(timezone.utc).isoformat(),
                 "footer": {
-                    "text": "spoo-me",
-                    "icon_url": "https://spoo.me/static/images/favicon.png",
+                    "text": "my.ket.horse",
+                    "icon_url": "https://my.ket.horse/static/images/favicon.png",
                 },
             }
         ]
@@ -64,8 +64,8 @@ def send_contact_message(webhook_uri, email, message):
                 ],
                 "timestamp": datetime.now(timezone.utc).isoformat(),
                 "footer": {
-                    "text": "spoo-me",
-                    "icon_url": "https://spoo.me/static/images/favicon.png",
+                    "text": "my.ket.horse",
+                    "icon_url": "https://my.ket.horse/static/images/favicon.png",
                 },
             }
         ]

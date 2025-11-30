@@ -1,8 +1,8 @@
 services:
   - type: web
     runtime: python
-    name: url-shortener
-    repo: https://github.com/spoo-me/url-shortener
+    name: my-ket-horse
+    repo: https://github.com/zophiezlan/spoo-horse
     plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn main:app

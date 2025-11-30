@@ -89,7 +89,7 @@ def export_to_excel(data):
         output,
         mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         as_attachment=True,
-        download_name="spoo-me-export.xlsx",
+        download_name="my-ket-horse-export.xlsx",
     )
 
 
@@ -171,7 +171,7 @@ def export_to_csv(data):
         output,
         mimetype="application/zip",
         as_attachment=True,
-        download_name="spoo-me-export-csv.zip",
+        download_name="my-ket-horse-export-csv.zip",
     )
 
 
@@ -187,7 +187,7 @@ def export_to_json(data):
         output_bytes,
         mimetype="application/json",
         as_attachment=True,
-        download_name="spoo-me-export.json",
+        download_name="my-ket-horse-export.json",
     )
 
 

@@ -8,7 +8,7 @@ docs = Blueprint("docs", __name__)
 @docs.route("/docs/")
 @limiter.exempt
 def serve_docs_index():
-    return redirect("https://docs.spoo.me"), 301
+    return redirect("https://github.com/zophiezlan/spoo-horse"), 301
 
 
 @docs.route("/docs/privacy-policy")
@@ -42,4 +42,4 @@ def redirect_docs_wildcard(path):
         # but handle it gracefully just in case
         return redirect(f"/docs/{path}"), 301
 
-    return redirect(f"https://docs.spoo.me/{path}"), 301
+    return redirect(f"https://github.com/zophiezlan/spoo-horse"), 301

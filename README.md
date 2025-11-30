@@ -16,7 +16,6 @@
 <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmy.ket.horse%2Fmetric&query=%24.total-shortlinks&label=Links%20Shortened&color=6a5cf4&cacheSeconds=60" alt="Total URLs Shortened">
 <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmy.ket.horse%2Fmetric&query=%24.total-clicks&label=Clicks%20Redirected&color=6a5cf4&cacheSeconds=60" alt="Total Clicks Redirected">
 <a href="https://my.ket.horse/discord"><img src="https://img.shields.io/discord/1192388005206433892?logo=discord" alt="Discord"></a>
-<a href="https://twitter.com/spoo_me"><img src="https://img.shields.io/twitter/follow/spoo_me?logo=x&label=%40spoo_me&color=0bf" alt="X (formerly Twitter) Follow"></a>
 </p>
 
 # ⚡ Introduction
@@ -92,7 +91,7 @@ To self-host my.ket.horse on your server, follow the this **detailed** guide:
 ### 📂 Clone the repository (Docker Method)
 
 ```bash
-git clone https://github.com/spoo-me/url-shortener.git
+git clone https://github.com/zophiezlan/spoo-horse.git
 ```
 
 ### Rename .env.example to .env
@@ -132,7 +131,7 @@ docker-compose up
 ### 📂 Clone the repository
 
 ```bash
-git clone https://github.com/spoo-me/url-shortener.git
+git clone https://github.com/zophiezlan/spoo-horse.git
 ```
 
 ### Creating a virtual environment (Optional)
@@ -186,9 +185,9 @@ Open your browser and go to `http://localhost:8000` to access the **my.ket.horse
 
 **Contributions are always welcome!** 🎉 Here's how you can contribute:
 
-- Bugs are logged using the github issue system. To report a bug, simply [open a new issue](https://github.com/spoo-me/url-shortener/issues/new).
+- Bugs are logged using the github issue system. To report a bug, simply [open a new issue](https://github.com/zophiezlan/spoo-horse/issues/new).
 - Follow the [contribution guidelines](contributing.md) to get started.
-- Make a [pull request](https://github.com/spoo-me/url-shortener/pull) for any feature or bug fix.
+- Make a [pull request](https://github.com/zophiezlan/spoo-horse/pull) for any feature or bug fix.
 
 > [!IMPORTANT]
 > For any type of support or queries, feel free to reach out to us at <kbd>[✉️ support@my.ket.horse](mailto:support@my.ket.horse)</kbd>
@@ -197,19 +196,19 @@ Open your browser and go to `http://localhost:8000` to access the **my.ket.horse
 
 **Main Page**
 
-[![spoo me main page](https://raw.githubusercontent.com/spoo-me/url-shortener/main/static/previews/main.png)](https://my.ket.horse)
+[![my.ket.horse main page](https://raw.githubusercontent.com/zophiezlan/spoo-horse/main/static/previews/main.png)](https://my.ket.horse)
 
 **Result Page**
 
-[![spoo me result page](https://raw.githubusercontent.com/spoo-me/url-shortener/main/static/previews/result.png)](https://my.ket.horse/result/ga)
+[![my.ket.horse result page](https://raw.githubusercontent.com/zophiezlan/spoo-horse/main/static/previews/result.png)](https://my.ket.horse/result/ga)
 
 **Stats Page**
 
-[![image](https://raw.githubusercontent.com/spoo-me/url-shortener/main/static/previews/stats.png)](https://my.ket.horse/stats/ga)
+[![image](https://raw.githubusercontent.com/zophiezlan/spoo-horse/main/static/previews/stats.png)](https://my.ket.horse/stats/ga)
 
 **API Page**
 
-[![image](https://raw.githubusercontent.com/spoo-me/url-shortener/main/static/previews/api.png)](https://my.ket.horse/api)
+[![image](https://raw.githubusercontent.com/zophiezlan/spoo-horse/main/static/previews/api.png)](https://my.ket.horse/api)
 
 # Repo Activity
 ![Contribution Charts](https://repobeats.axiom.co/api/embed/48a40934896cbcaff2812e80478ebb701ee49dd4.svg)
@@ -217,8 +216,8 @@ Open your browser and go to `http://localhost:8000` to access the **my.ket.horse
 <br><br>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=spoo-me/url-shortener&type=Date&theme=dark" />
-  <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=spoo-me/url-shortener&type=Date" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=zophiezlan/spoo-horse&type=Date&theme=dark" />
+  <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=zophiezlan/spoo-horse&type=Date" />
 </picture>
 
 ---
@@ -231,5 +230,5 @@ Open your browser and go to `http://localhost:8000` to access the **my.ket.horse
 All Rights Reserved</h6>
 
 <p align="center">
-	<a href="https://github.com/spoo-me/url-shortener/blob/master/LICENSE.txt"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=APACHE-2.0&logoColor=d9e0ee&colorA=363a4f&colorB=b7bdf8"/></a>
+	<a href="https://github.com/zophiezlan/spoo-horse/blob/master/LICENSE.txt"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=APACHE-2.0&logoColor=d9e0ee&colorA=363a4f&colorB=b7bdf8"/></a>
 </p>
