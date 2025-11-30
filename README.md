@@ -1,8 +1,4 @@
-<image src="https://my.ket.horse/static/images/banner-rounded.png">
-
-<h3 align="center">my.ket.horse</h3>
-<p align="center">Shorten Your Url not Your Possibilities 🚀</p>
-
+<h3 align="center">my.ket.horse</h3><p align="center">Shorten Your Url not Your Possibilities 🚀</p>
 <p align="center">
     <a href="#-features"><kbd>🔥 Features</kbd></a>
     <a href="#-endpoints"><kbd>📌 Endpoints</kbd></a>
